@@ -4,6 +4,7 @@ class Event < ActiveRecord::Base
   # relationships .............................................................
   belongs_to :user
   belongs_to :project
+  belongs_to :source, polymorphic: true
   # validations ...............................................................
   validates :action, presence: true
   validates :user, presence: true

@@ -6,6 +6,8 @@ class CreateEvents < ActiveRecord::Migration
       t.references  :user, index: true
       t.string      :action
       t.references  :project, index: true
+      t.string      :extra_1
+      t.string      :extra_2
 
       t.timestamps null: false
     end
