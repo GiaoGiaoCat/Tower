@@ -1,9 +1,16 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+DEFAULTS: &DEFAULTS
+  created_on: <%= 3.weeks.ago.to_s(:db) %>
+  updated_on: <%= 3.weeks.ago.to_s(:db) %>
 
 one:
-  nickname: MyString
-  email: MyString
+  id: 1
+  nickname: Victor
+  email: victor@example.com
+  <<: *DEFAULTS
 
 two:
-  nickname: MyString
-  email: MyString
+  id: 2
+  nickname: Kim
+  email: kim@example.com
+  <<: *DEFAULTS

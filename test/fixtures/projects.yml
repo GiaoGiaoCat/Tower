@@ -1,11 +1,27 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+DEFAULTS: &DEFAULTS
+  created_on: <%= 3.weeks.ago.to_s(:db) %>
+  updated_on: <%= 3.weeks.ago.to_s(:db) %>
 
 one:
-  name: MyString
-  description: MyText
+  id: 1
+  team_id: 1
+  name: '航天飞机'
   private: false
+  <<: *DEFAULTS
 
 two:
-  name: MyString
-  description: MyText
+  id: 2
+  team_id: 1
+  name: '潜水艇'
+  description: ''
   private: false
+  <<: *DEFAULTS
+
+three:
+  id: 3
+  team_id: 2
+  name: '宇宙飞船'
+  description: '我们的目标是星辰大海'
+  private: false
+  <<: *DEFAULTS

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150211012625) do
+ActiveRecord::Schema.define(version: 20150211015259) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "commentable_id"
@@ -24,6 +24,22 @@ ActiveRecord::Schema.define(version: 20150211012625) do
   end
 
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+
+  create_table "events", force: :cascade do |t|
+    t.integer  "source_id"
+    t.string   "source_type"
+    t.integer  "user_id"
+    t.string   "action"
+    t.integer  "project_id"
+    t.string   "extra_1"
+    t.string   "extra_2"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "events", ["project_id"], name: "index_events_on_project_id"
+  add_index "events", ["source_id", "source_type"], name: "index_events_on_source_id_and_source_type"
+  add_index "events", ["user_id"], name: "index_events_on_user_id"
 
   create_table "memberships", force: :cascade do |t|
     t.string   "role",       limit: 20

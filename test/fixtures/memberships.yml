@@ -1,7 +1,16 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+DEFAULTS: &DEFAULTS
+  created_on: <%= 3.weeks.ago.to_s(:db) %>
+  updated_on: <%= 3.weeks.ago.to_s(:db) %>
 
 one:
-  role: MyString
+  team_id: 1
+  user_id: 1
+  role: owner
+  <<: *DEFAULTS
 
 two:
-  role: MyString
+  team_id: 1
+  user_id: 2
+  role: member
+  <<: *DEFAULTS

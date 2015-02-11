@@ -1,7 +1,14 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+DEFAULTS: &DEFAULTS
+  created_on: <%= 3.weeks.ago.to_s(:db) %>
+  updated_on: <%= 3.weeks.ago.to_s(:db) %>
 
 one:
-  name: MyString
+  id: 1
+  name: '网易彩票'
+  <<: *DEFAULTS
 
 two:
-  name: MyString
+  id: 2
+  name: '腾讯视频'
+  <<: *DEFAULTS
