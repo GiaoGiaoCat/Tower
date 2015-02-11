@@ -7,12 +7,28 @@ class Comment < ActiveRecord::Base
   # validations ...............................................................
   validates :content, presence: true
   # callbacks .................................................................
-  # after_touch :touch_all_variants
+  after_create :touch_created_event
   # scopes ....................................................................
   # additional config (i.e. accepts_nested_attribute_for etc...) ..............
+  attr_accessor :handler_id
   # class methods .............................................................
   # public instance methods ...................................................
   # protected instance methods ................................................
   # private instance methods ..................................................
   # private
+  private
+
+  def touch_created_event
+    action = "reply_#{commentable_type.downcase}".to_sym
+    touch_event(handler_id, action, { extra_1: commentable_id })
+  end
+
+  def touch_event(user_id, action, **options)
+    event_parameters = default_parameters(user_id, action).merge(options)
+    events.create(event_parameters)
+  end
+
+  def default_parameters
+    { user_id: user_id, action: action }
+  end
 end
