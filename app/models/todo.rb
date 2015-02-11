@@ -60,7 +60,7 @@ class Todo < ActiveRecord::Base
     events.create(event_parameters)
   end
 
-  def default_parameters
+  def default_parameters(user_id, action)
     { user_id: user_id, action: action }
   end
 end
