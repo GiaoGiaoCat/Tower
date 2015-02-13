@@ -5,6 +5,7 @@ class Project < ActiveRecord::Base
   belongs_to :team, inverse_of: :project
   has_many :accesses, dependent: :destroy, inverse_of: :project
   has_many :users, through: :accesses
+  has_many :events
   # validations ...............................................................
   validates_presence_of :name
   validates_uniqueness_of :name, scope: :team_id

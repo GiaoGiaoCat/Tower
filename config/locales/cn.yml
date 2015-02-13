@@ -1,0 +1,8 @@
+cn:
+  todo_created: '创建了任务'
+  todo_destroyed: '删除了任务'
+  todo_finished: '完成了任务'
+  todo_assign_user: "给 %{extra_1} 指派了任务"
+  todo_change_user: "把 %{extra_2} 的任务指派给 %{extra_1}"
+  todo_changed_expiry_on: "将任务完成时间从 %{extra_2} 修改为 %{extra_1}"
+  reply_todo: '回复了任务'

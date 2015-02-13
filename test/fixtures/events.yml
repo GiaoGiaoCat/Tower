@@ -1,7 +1,81 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  source_id: 1
 
-two:
+<% 1...50.times do |i| %>
+# 1. 创建任务
+event_<%= rand(999999) %>:
+  project_id: 1
+  user_id: 1
   source_id: 1
+  source_type: 'Todo'
+  action: 'todo_created'
+  created_at: <%= 1.minutes.ago(Time.now) %>
+  updated_at: <%= Time.now %>
+
+# 2. 删除任务
+event_<%= rand(999999) %>:
+  project_id: 1
+  user_id: 2
+  source_id: 2
+  source_type: 'Todo'
+  action: 'todo_destroyed'
+  created_at: <%= Time.now %>
+  updated_at: <%= Time.now %>
+
+# 3. 完成任务
+event_<%= rand(999999) %>:
+  project_id: 1
+  user_id: 1
+  source_id: 2
+  source_type: 'Todo'
+  action: 'todo_finished'
+  created_at: <%= Time.now %>
+  updated_at: <%= Time.now %>
+
+# 4. 给任务指派完成
+event_<%= rand(999999) %>:
+  project_id: 1
+  user_id: 1
+  source_id: 2
+  source_type: 'Todo'
+  action: 'todo_assign_user'
+  extra_1: 2
+  created_at: <%= Time.now %>
+  updated_at: <%= Time.now %>
+
+# 5. 修改任务完成者
+event_<%= rand(999999) %>:
+  project_id: 1
+  user_id: 2
+  source_id: 2
+  source_type: 'Todo'
+  action: 'todo_change_user'
+  extra_1: 2
+  extra_2: 3
+  created_at: <%= Time.now %>
+  updated_at: <%= Time.now %>
+
+# 6. 修改任务完成时间
+event_<%= rand(999999) %>:
+  project_id: 1
+  user_id: 3
+  source_id: 2
+  source_type: 'Todo'
+  action: 'todo_changed_expiry_on'
+  extra_1: <%= Time.now %>
+  extra_2: <%= (1).days.ago(Time.now) %>
+  created_at: <%= Time.now %>
+  updated_at: <%= Time.now %>
+
+# 7. 评论任务
+event_<%= rand(999999) %>:
+  project_id: 1
+  user_id: 1
+  source_id: 1
+  source_type: 'Comment'
+  action: 'reply_todo'
+  extra_1: <%= (1).days.ago(Time.now) %>
+  extra_2: <%= Time.now %>
+  created_at: <%= Time.now %>
+  updated_at: <%= Time.now %>
+<% end %>

@@ -1,10 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  id: 1
   todo_list_id: 1
   content: first todo
 
 two:
+  id: 2
   todo_list_id: 1
   content: second todo
   user_id: 1
+

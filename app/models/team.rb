@@ -5,6 +5,7 @@ class Team < ActiveRecord::Base
   has_many :memberships, dependent: :destroy
   has_many :users, through: :memberships
   has_many :projects, dependent: :destroy, inverse_of: :team
+  has_many :events, through: :projects, dependent: :destroy
   # validations ...............................................................
   validates :name, presence: true
   # callbacks .................................................................

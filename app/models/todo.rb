@@ -20,6 +20,10 @@ class Todo < ActiveRecord::Base
   attr_accessor :handler_id
   # class methods .............................................................
   # public instance methods ...................................................
+  def title
+    content
+  end
+
   def finished!
     update_attribute(:finished, true)
   end

@@ -1,7 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  id: 1
   commentable_id: 1
+  commentable_type: 'Todo'
+  content: '好的'
 
 two:
+  id: 2
   commentable_id: 1
+  commentable_type: 'Todo'
+  content: '没问题'

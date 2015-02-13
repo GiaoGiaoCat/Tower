@@ -1,0 +1,6 @@
+<div style="border-bottom: 1px solid black;">
+<small><%= event.created_at.strftime('%H:%M') %></small>
+<span><%= event.user.nickname %></span>
+<span><%= t(event.action, extra_1: show_extra_info_by_action(event.extra_1, event.action), extra_2: show_extra_info_by_action(event.extra_2, event.action)) %>: </span>
+<%= render partial: "#{event.source_type.downcase}_event" , object: event.source, as: 'source' %>
+</div>
