@@ -4,6 +4,7 @@ class Comment < ActiveRecord::Base
   # relationships .............................................................
   belongs_to :commentable, polymorphic: true
   has_many :comments, as: :commentable
+  has_many :events, as: :source
   # validations ...............................................................
   validates :content, presence: true
   # callbacks .................................................................
@@ -28,7 +29,7 @@ class Comment < ActiveRecord::Base
     events.create(event_parameters)
   end
 
-  def default_parameters
+  def default_parameters(user_id, action)
     { user_id: user_id, action: action }
   end
 end
