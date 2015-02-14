@@ -1,7 +1,8 @@
 class EventsController < ApplicationController
+
   def index
     load_team
-    @events = @team.events
+    @events = @team.events.page params[:page]
   end
 
   private
