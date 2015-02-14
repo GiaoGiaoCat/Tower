@@ -1,14 +1,13 @@
 class Comment < ActiveRecord::Base
   # extends ...................................................................
   # includes ..................................................................
+  include Eventable
   # relationships .............................................................
   belongs_to :commentable, polymorphic: true
   has_many :comments, as: :commentable
-  has_many :events, as: :source
   # validations ...............................................................
   validates :content, presence: true
   # callbacks .................................................................
-  after_create :touch_created_event
   # scopes ....................................................................
   # additional config (i.e. accepts_nested_attribute_for etc...) ..............
   attr_accessor :handler_id
@@ -26,12 +25,13 @@ class Comment < ActiveRecord::Base
     touch_event(handler_id, action, { extra_1: commentable_id })
   end
 
-  def touch_event(user_id, action, **options)
-    event_parameters = default_parameters(user_id, action).merge(options)
-    events.create(event_parameters)
-  end
+  def touch_destroyed_event; end
 
-  def default_parameters(user_id, action)
-    { user_id: user_id, action: action }
-  end
+  def touch_finished_event; end
+
+  def touch_changed_expiry_on_event; end
+
+  def touch_assign_user_event; end
+
+  def touch_change_user_event; end
 end

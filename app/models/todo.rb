@@ -1,20 +1,14 @@
 class Todo < ActiveRecord::Base
   # extends ...................................................................
   # includes ..................................................................
+  include Eventable
   # relationships .............................................................
   belongs_to :todo_list
   belongs_to :user
   has_many :comments, as: :commentable
-  has_many :events, as: :source
   # validations ...............................................................
   validates :content, presence: true, length: { maximum: 1000 }
   # callbacks .................................................................
-  after_create :touch_created_event
-  before_destroy :touch_destroyed_event
-  after_save :touch_finished_event
-  after_save :touch_assign_user_event
-  after_save :touch_change_user_event
-  after_save :touch_changed_expiry_on_event
   # scopes ....................................................................
   # additional config (i.e. accepts_nested_attribute_for etc...) ..............
   attr_accessor :handler_id
@@ -33,7 +27,6 @@ class Todo < ActiveRecord::Base
   end
   # protected instance methods ................................................
   # private instance methods ..................................................
-  # private
   private
 
   def touch_created_event
@@ -66,12 +59,5 @@ class Todo < ActiveRecord::Base
     end
   end
 
-  def touch_event(user_id, action, **options)
-    event_parameters = default_parameters(user_id, action).merge(options)
-    events.create(event_parameters)
-  end
 
-  def default_parameters(user_id, action)
-    { user_id: user_id, action: action }
-  end
 end
