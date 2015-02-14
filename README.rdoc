@@ -1,28 +1,16 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+1. Ruby 2.2.0 & Rails 4.2
+2. rake db:migrate
+3. rake db:fixtures:load
+4. rake test
+5. rails s
+6. 浏览器输入 http://localhost:3000/teams/1/events 查看效果
 
-Things you may want to cover:
+== 几点补充说明
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+1. todo 应该使用了 paranoia 这类的gem实现了假删除，我仅增加了 deleted_at 字段，并没实现相关功能。
+2. 所有模型应该都用了 EncryptedId 来实现加密 id，时间关系也没有去实现。
+3. 测试框架我不熟悉 rspec 所以使用的 minitest。
+4. 试题中要求 “仔细研究 https://tower.im/s/bf4N” 我根本打不开这个地址，直接跳转到首页去了。
+5.
